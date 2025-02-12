@@ -1,4 +1,4 @@
-const apiEndpoint = "https://fa-todo-backend-baqmes.azurewebsites.net/api/tasks";
+const apiEndpoint = "https://bend-210-300621-fabrice-schaller.internal.purplecliff-0a72fe44.northeurope.azurecontainerapps.io/api/tasks";
 
 $(document).ready(function () {
   // Charger les tâches au démarrage
@@ -31,22 +31,22 @@ $(document).ready(function () {
     const $taskElement = $(this).closest("li"); // Trouve l'élément li parent
     const taskId = $taskElement.data("id");
     const isCompleted = $taskElement.hasClass("completed");
-  
+
     // Récupère le texte directement comme un nœud
     const description = $taskElement.contents().filter(function () {
       return this.nodeType === 3; // Node type 3 = texte
     }).text().trim();
-  
+
     console.log("Description trouvée :", description);
-  
+
     if (!description) {
       console.error("Erreur : la description de la tâche est vide !");
       return;
     }
-  
+
     // Prépare l'objet mis à jour
     const updatedTask = { id: taskId, description: description, completed: !isCompleted };
-  
+
     try {
       await fetch(apiEndpoint, {
         method: "PUT",
