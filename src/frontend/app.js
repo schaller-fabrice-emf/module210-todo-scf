@@ -1,4 +1,4 @@
-const apiEndpoint = "https://bend-210-300621-fabrice-schaller.internal.purplecliff-0a72fe44.northeurope.azurecontainerapps.io/api/tasks";
+const apiEndpoint = "https://bend-210-300621-fabrice-schaller.purplecliff-0a72fe44.northeurope.azurecontainerapps.io//api/tasks";
 // const apiEndpoint = "https://backend-210-300621-alexis-girard.blacksky-0acd1103.westeurope.azurecontainerapps.io/api/tasks";
 
 $(document).ready(function () {
