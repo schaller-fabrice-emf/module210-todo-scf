@@ -1,0 +1,31 @@
+name: Build and push Docker image to Exoscale Registry
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REG_NAME: "exo.container-registry.com"  # Exoscale-Registry
+  IMAGE_NAME: "todo-app"
+  TAG_NAME: "scf"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Login to Exoscale Registry
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} $REG_NAME
+
+    - name: Build Docker Image for Backend
+      run: |
+        docker build -t $REG_NAME/c213-emf/$IMAGE_NAME:$TAG_NAME ./src/backend/
+
+    - name: Push Docker Image to Exoscale Registry
+      run: |
+        docker push $REG_NAME/c213-emf/$IMAGE_NAME:$TAG_NAME
