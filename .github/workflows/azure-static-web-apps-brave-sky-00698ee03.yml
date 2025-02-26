@@ -44,6 +44,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: "https://todo-app.fabriceschaller.emf-informatique.ch"
+          uploadArtifacts: true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
