@@ -47,11 +47,7 @@ jobs:
         with:
           urls: "https://todo-app.fabriceschaller.emf-informatique.ch"
           uploadArtifacts: false
-          assertions: |
-              performance: '>=90'
-              accessibility: '>=90'
-              seo: '>=90'
-              best-practices: '>=90'
+          configPath: './lighthouse.json'
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
